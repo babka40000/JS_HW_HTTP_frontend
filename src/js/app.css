@@ -1,0 +1,82 @@
+.ticket {
+    border: 1px solid rebeccapurple;
+    margin-bottom: 5px;
+    width: 800px;
+}
+
+.ticket-up{
+    display: flex;
+    height: 50px;
+}
+
+.ticket-name {
+    display: flex;
+    width: 70%;
+    height: 100%;
+    align-items: center;
+}
+
+.ticket-date {
+    display: flex;
+    width: 20%;
+    height: 100%;
+    align-items: center;  
+}
+
+.ticket-button {
+    display: flex;
+    height: 30px;
+    margin-left: 2px;
+}
+
+.ticket-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.redo-window {
+    display: flex;
+    flex-direction: column;
+    z-index: 999;
+    position: absolute;
+    width: 300px;
+    height: 200px;
+    border: 1px solid black;
+    background-color: beige;
+    left: 500px;
+    top: 400px;
+}
+
+.delete-windows {
+    display: flex;
+    flex-direction: column;
+    z-index: 999;
+    position: absolute;
+    width: 300px;
+    height: 200px;
+    border: 1px solid black;
+    background-color: beige;
+    left: 500px;
+    top: 400px;
+}
+
+.add-button {
+    display: flex;
+    margin-bottom: 10px;
+    width: 150px;
+    height: 30px;
+}
+
+.add-window {
+    display: flex;
+    flex-direction: column;
+    z-index: 999;
+    position: absolute;
+    width: 300px;
+    height: 200px;
+    border: 1px solid black;
+    background-color: beige;
+    left: 500px;
+    top: 400px;  
+}
