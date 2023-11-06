@@ -15,6 +15,13 @@ function updateTicket(id, name, description, status) {
 }
 
 function deleteTicket(id) {
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState !== 4) return;
+    
+    // console.log(xhr.readyState);
+    // console.log(xhr.responseText);
+  }
+
   xhr.open('GET', `http://localhost:7070/?method=deleteTicket&id=${id}`);
   xhr.send();
 }
