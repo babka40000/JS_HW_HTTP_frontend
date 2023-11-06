@@ -20,7 +20,7 @@ function deleteTicket(id) {
 }
 
 function addTicket(name, description) {
-  xhr.open('POST', 'http://localhost:7070/');
+  xhr.open('POST', 'http://localhost:7070');
 
   const data = { method: 'addTicket', data: { name, description } };
   const dataJSON = JSON.stringify(data);
