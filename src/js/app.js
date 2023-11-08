@@ -15,12 +15,6 @@ function updateTicket(id, name, description, status) {
 }
 
 function deleteTicket(id) {
-  // xhr.onreadystatechange = () => {
-  //   if (xhr.readyState !== 4) {
-  //     return 1;
-  //   }
-  // };
-
   xhr.open('GET', `http://localhost:7070/?method=deleteTicket&id=${id}`);
   xhr.send();
 }
@@ -35,12 +29,6 @@ function addTicket(name, description) {
 }
 
 function getAllTicket() {
-  const tickets = document.querySelectorAll('.ticket');
-
-  for (const ticket of tickets) {
-    ticket.remove();
-  }
-
   xhr.open('GET', 'http://localhost:7070/?method=allTickets');
   xhr.send();
 }
@@ -117,10 +105,8 @@ class Ticket {
     this.name = redoName.value;
     this.description = redoDescription.value;
 
-    updateTicket(this.id, this.name, this.description, this.status);
-
     redoWindows.remove();
-    getAllTicket();
+    updateTicket(this.id, this.name, this.description, this.status);
   }
 
   addTicket() {
@@ -181,10 +167,9 @@ class Ticket {
   deleteWindowOkEvent() {
     const deleteWindow = this.element.querySelector('.delete-windows');
 
-    deleteTicket(this.id);
-
     deleteWindow.remove();
-    getAllTicket();
+
+    deleteTicket(this.id);
   }
 
   eventTicketName() {
@@ -204,6 +189,12 @@ class Ticket {
 }
 
 function drawTickets(ticketsData) {
+  const tickets = document.querySelectorAll('.ticket');
+
+  for (const ticket of tickets) {
+    ticket.remove();
+  }
+
   for (const ticketData of ticketsData) {
     const ticket = new Ticket(document.querySelector('.container'), ticketData.id, ticketData.name, ticketData.description, ticketData.status, ticketData.created);
     ticket.addTicket();
@@ -211,7 +202,9 @@ function drawTickets(ticketsData) {
 }
 
 function dataHandler(data) {
-  if (data.comand === 'allTickets') {
+  const commands = ['allTickets', 'updateTicket', 'deleteTicket', 'addTicket'];
+  console.log(data.data);
+  if (commands.includes(data.comand)) {
     drawTickets(data.data);
   }
 }
@@ -257,10 +250,9 @@ addButton.addEventListener('click', () => {
     const addName = addWindow.querySelector('.add-name');
     const addDescription = addWindow.querySelector('.add-description');
 
-    addTicket(addName.value, addDescription.value);
-
     addWindow.remove();
-    getAllTicket();
+
+    addTicket(addName.value, addDescription.value);
   });
 });
 
